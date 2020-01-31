@@ -1,0 +1,19 @@
+@mixin position($type, $top: null, $right: null, $bottom: null, $left: null) {
+  position: $type;
+  top: $top;
+  right: $right;
+  bottom: $bottom;
+  left: $left;
+}
+
+@mixin mQ($breakpoint) {
+  $size: map-get($breakpoints, $breakpoint);
+
+  @if ($size) {
+    @media #{$size} {
+      @content;
+    }
+  } @else {
+    @error '"#{$breakpoint}" - błąd';
+  }
+}

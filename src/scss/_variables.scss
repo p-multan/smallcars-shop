@@ -1,0 +1,30 @@
+$max-width: 1280px;
+
+$transition: 0.3s ease-in-out;
+
+// breakpoints
+$breakpoints: (
+  small: (
+    min-width: 576px
+  ),
+  medium: (
+    min-width: 768px
+  ),
+  large: (
+    min-width: 1200px
+  ),
+  xlarge: (
+    min-width: 1600px
+  ),
+  xxlarge: (
+    min-width: 1850px
+  ),
+  giga: (
+    min-width: 2000px
+  )
+);
+
+// colors
+$light-gray-color: #ececec;
+$off-white-color: #e2d4bc;
+$text-dark-color: #333;
