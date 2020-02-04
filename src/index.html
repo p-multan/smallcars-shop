@@ -12,6 +12,31 @@
     />
   </head>
   <body>
+    <!-- Modal templates -->
+    <template id="modal-template">
+      <div class="modalBackdrop"></div>
+      <div class="modal"></div>
+    </template>
+
+    <template id="product-description-modal-content">
+      <div class="modal__content">
+        <span class="modal__closeBtn">
+          <i class="fas fa-window-close modal__closeBtn-icon"></i>
+        </span>
+        <div class="modal__intro">
+          <img src="" alt="" class="modal__intro-image" />
+          <div class="modal__intro-details">
+            <h1 class="modal__intro-details-title"></h1>
+            <h3 class="modal__intro-details-price"></h3>
+          </div>
+        </div>
+        <div class="modal__desc">
+          <h3 class="modal__desc-title">Product description:</h3>
+          <p class="modal__desc-text"></p>
+        </div>
+      </div>
+    </template>
+
     <!-- Navigation -->
     <nav class="navbar">
       <div class="container">
@@ -46,7 +71,7 @@
     <section class="products py-4" id="products">
       <h2 class="products__title">Our products</h2>
       <div class="products__items">
-        <article class="products__item">
+        <!-- <article class="products__item">
           <div class="products__item-showcase">
             <img
               src="./images/abarth 124 spider.jpg"
@@ -65,133 +90,7 @@
           </div>
           <h3 class="products__item-title">Abarth 124 Spider</h3>
           <h4 class="products__item-price">$19.99</h4 class="products__item-title">
-        </article>
-
-        <article class="products__item">
-          <div class="products__item-showcase">
-            <img
-              src="./images/abarth 124 spider.jpg"
-              class="products__item-showcase-image"
-              alt="Abarth 124 Spider"
-            />
-            <button class="products__item-showcase-infoBtn" data-id="${product.id}">
-              <i class="fas fa-search products__item-showcase-infoBtn-icon"></i>
-              read more
-            </button>
-
-            <button class="products__item-showcase-cartBtn" data-id="${product.id}">
-              <i class="fas fa-shopping-cart products__item-showcase-cartBtn-icon"></i>
-              add to the cart
-            </button>
-          </div>
-          <h3 class="products__item-title">Abarth 124 Spider</h3>
-          <h4 class="products__item-price">$19.99</h4class="products__item-title">
-        </article>
-
-        <article class="products__item">
-          <div class="products__item-showcase">
-            <img
-              src="./images/abarth 124 spider.jpg"
-              class="products__item-showcase-image"
-              alt="Abarth 124 Spider"
-            />
-            <button class="products__item-showcase-infoBtn" data-id="${product.id}">
-              <i class="fas fa-search products__item-showcase-infoBtn-icon"></i>
-              read more
-            </button>
-
-            <button class="products__item-showcase-cartBtn" data-id="${product.id}">
-              <i class="fas fa-shopping-cart products__item-showcase-cartBtn-icon"></i>
-              add to the cart
-            </button>
-          </div>
-          <h3 class="products__item-title">Abarth 124 Spider</h3>
-          <h4 class="products__item-price">$19.99</h4class="products__item-title">
-        </article>
-
-        <article class="products__item">
-          <div class="products__item-showcase">
-            <img
-              src="./images/abarth 124 spider.jpg"
-              class="products__item-showcase-image"
-              alt="Abarth 124 Spider"
-            />
-            <button class="products__item-showcase-infoBtn" data-id="${product.id}">
-              <i class="fas fa-search products__item-showcase-infoBtn-icon"></i>
-              read more
-            </button>
-
-            <button class="products__item-showcase-cartBtn" data-id="${product.id}">
-              <i class="fas fa-shopping-cart products__item-showcase-cartBtn-icon"></i>
-              add to the cart
-            </button>
-          </div>
-          <h3 class="products__item-title">Abarth 124 Spider</h3>
-          <h4 class="products__item-price">$19.99</h4class="products__item-title">
-        </article>
-
-        <article class="products__item">
-          <div class="products__item-showcase">
-            <img
-              src="./images/abarth 124 spider.jpg"
-              class="products__item-showcase-image"
-              alt="Abarth 124 Spider"
-            />
-            <button class="products__item-showcase-infoBtn" data-id="${product.id}">
-              <i class="fas fa-search products__item-showcase-infoBtn-icon"></i>
-              read more
-            </button>
-
-            <button class="products__item-showcase-cartBtn" data-id="${product.id}">
-              <i class="fas fa-shopping-cart products__item-showcase-cartBtn-icon"></i>
-              add to the cart
-            </button>
-          </div>
-          <h3 class="products__item-title">Abarth 124 Spider</h3>
-          <h4 class="products__item-price">$19.99</h4class="products__item-title">
-        </article>
-
-        <article class="products__item">
-          <div class="products__item-showcase">
-            <img
-              src="./images/abarth 124 spider.jpg"
-              class="products__item-showcase-image"
-              alt="Abarth 124 Spider"
-            />
-            <button class="products__item-showcase-infoBtn" data-id="${product.id}">
-              <i class="fas fa-search products__item-showcase-infoBtn-icon"></i>
-              read more
-            </button>
-
-            <button class="products__item-showcase-cartBtn" data-id="${product.id}">
-              <i class="fas fa-shopping-cart products__item-showcase-cartBtn-icon"></i>
-              add to the cart
-            </button>
-          </div>
-          <h3 class="products__item-title">Abarth 124 Spider</h3>
-          <h4 class="products__item-price">$19.99</h4class="products__item-title">
-        </article>
-
-        <article class="products__item">
-          <div class="products__item-showcase">
-            <img
-              src="./images/abarth 124 spider.jpg"
-              class="products__item-showcase-image"
-              alt="Abarth 124 Spider"
-            />
-            <button class="products__item-showcase-infoBtn" data-id="${product.id}">
-              <i class="fas fa-search products__item-showcase-infoBtn-icon"></i>
-              read more
-            </button>
-
-            <button class="products__item-showcase-cartBtn" data-id="${product.id}">
-              <i class="fas fa-shopping-cart products__item-showcase-cartBtn-icon"></i>
-              add to the cart
-            </button>
-          </div>
-          <h3 class="products__item-title">Abarth 124 Spider</h3>
-          <h4 class="products__item-price">$19.99</h4class="products__item-title">
-        </article>
+        </article> -->
       </div>
     </section>
 
@@ -205,71 +104,32 @@
         </span>
         <h2 class="cart__title">Your content</h2>
         <div class="cart__items">
-
-          <div class="cart__item">
-            <img src="./images/abarth 124 spider.jpg" alt="Abarth 124 Spider" class="cart__item-image" />
+          <!-- <div class="cart__item">
+            <img
+              src="./images/abarth 124 spider.jpg"
+              alt="Abarth 124 Spider"
+              class="cart__item-image"
+            />
             <div class="cart__item-content">
               <div class="cart__item-info">
                 <h4 class="cart__item-info-title">Abarth 124 Spider</h4>
                 <h5 class="cart__item-info-price">$19.99</h5>
               </div>
               <div class="cart__item-controls">
-                <span class="fas fa-trash cart__item-controls-delete" data-id=${item.id}></span>
-                <span class="cart__item-controls-increase" data-id=${item.id}>+</span>
+                <span
+                  class="fas fa-trash cart__item-controls-delete"
+                  data-id="${item.id}"
+                ></span>
+                <span class="cart__item-controls-increase" data-id="${item.id}"
+                  >+</span
+                >
                 <span class="cart__item-controls-amount">1</span>
-                <span class="cart__item-controls-decrease" data-id=${item.id}>-</span>
+                <span class="cart__item-controls-decrease" data-id="${item.id}"
+                  >-</span
+                >
               </div>
             </div>
-          </div>
-          
-          <div class="cart__item">
-            <img src="./images/abarth 124 spider.jpg" alt="Abarth 124 Spider" class="cart__item-image" />
-            <div class="cart__item-content">
-              <div class="cart__item-info">
-                <h4 class="cart__item-info-title">Abarth 124 Spider</h4>
-                <h5 class="cart__item-info-price">$19.99</h5>
-              </div>
-              <div class="cart__item-controls">
-                <span class="fas fa-trash cart__item-controls-delete" data-id=${item.id}></span>
-                <span class="cart__item-controls-increase" data-id=${item.id}>+</span>
-                <span class="cart__item-controls-amount">1</span>
-                <span class="cart__item-controls-decrease" data-id=${item.id}>-</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="cart__item">
-            <img src="./images/abarth 124 spider.jpg" alt="Abarth 124 Spider" class="cart__item-image" />
-            <div class="cart__item-content">
-              <div class="cart__item-info">
-                <h4 class="cart__item-info-title">Abarth 124 Spider</h4>
-                <h5 class="cart__item-info-price">$19.99</h5>
-              </div>
-              <div class="cart__item-controls">
-                <span class="fas fa-trash cart__item-controls-delete" data-id=${item.id}></span>
-                <span class="cart__item-controls-increase" data-id=${item.id}>+</span>
-                <span class="cart__item-controls-amount">1</span>
-                <span class="cart__item-controls-decrease" data-id=${item.id}>-</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="cart__item">
-            <img src="./images/abarth 124 spider.jpg" alt="Abarth 124 Spider" class="cart__item-image" />
-            <div class="cart__item-content">
-              <div class="cart__item-info">
-                <h4 class="cart__item-info-title">Abarth 124 Spider</h4>
-                <h5 class="cart__item-info-price">$19.99</h5>
-              </div>
-              <div class="cart__item-controls">
-                <span class="fas fa-trash cart__item-controls-delete" data-id=${item.id}></span>
-                <span class="cart__item-controls-increase" data-id=${item.id}>+</span>
-                <span class="cart__item-controls-amount">1</span>
-                <span class="cart__item-controls-decrease" data-id=${item.id}>-</span>
-              </div>
-            </div>
-          </div>
-
+          </div> -->
         </div>
         <div class="cart__footer">
           <p class="cart__footer-summary">
@@ -282,6 +142,7 @@
       </div>
     </section>
 
+    <!-- Footer -->
     <footer class="footer py-4">
       <div class="container">
         <div class="footer__content">

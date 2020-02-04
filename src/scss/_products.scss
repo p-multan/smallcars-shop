@@ -68,6 +68,11 @@
         top: 70%;
         background-color: darken($off-white-color, 35%);
         transition: 0.3s 0.1s ease-in-out;
+
+        &:disabled {
+          color: #006108;
+          background-color: #8fca94;
+        }
       }
 
       &:hover &-cartBtn,

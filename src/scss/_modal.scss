@@ -1,0 +1,204 @@
+.modalBackdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: transparentize(darken($off-white-color, 30%), 0.2);
+  z-index: 2;
+}
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  max-width: $max-width;
+  height: auto;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+  z-index: 3;
+
+  &__content {
+    padding: 2rem;
+
+    &--center {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 4rem 0;
+    }
+
+    @include mQ(large) {
+      padding: 8rem 2rem;
+    }
+  }
+
+  &__closeBtn {
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
+    transition: $transition;
+    cursor: pointer;
+
+    &-icon {
+      font-size: 2rem;
+
+      @include mQ(large) {
+        font-size: 3rem;
+      }
+    }
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  &__intro {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+
+    @include mQ(medium) {
+      flex-direction: row;
+      margin-bottom: 2rem;
+    }
+
+    @include mQ(large) {
+      width: 80%;
+      margin: 2rem auto;
+    }
+
+    &-image {
+      width: 100%;
+      margin-bottom: 2rem;
+      @include mQ(medium) {
+        width: 58%;
+        border-radius: 20px;
+      }
+
+      @include mQ(large) {
+        width: 40%;
+      }
+    }
+
+    &-details {
+      text-align: center;
+      margin-bottom: 2rem;
+      @include mQ(medium) {
+        width: 38%;
+        margin-bottom: 0;
+      }
+
+      @include mQ(large) {
+        width: 40%;
+      }
+
+      &-title {
+        margin: 0 0 1rem 0;
+        font-size: 2.5rem;
+
+        @include mQ(medium) {
+          font-size: 3rem;
+        }
+
+        @include mQ(large) {
+          font-size: 4rem;
+        }
+      }
+
+      &-price {
+        margin: 0;
+        font-size: 2rem;
+
+        @include mQ(medium) {
+          font-size: 2.5rem;
+        }
+
+        @include mQ(large) {
+          font-size: 3rem;
+        }
+      }
+    }
+  }
+
+  &__desc {
+    @include mQ(large) {
+      width: 80%;
+      margin: 0 auto;
+    }
+    &-title {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+
+      @include mQ(medium) {
+        font-size: 2.5rem;
+      }
+
+      @include mQ(large) {
+        font-size: 3rem;
+        margin-bottom: 2rem;
+      }
+    }
+
+    &-text {
+      max-height: 200px;
+      overflow: auto;
+      font-size: 1.6rem;
+      line-height: 2rem;
+
+      @include mQ(medium) {
+        max-height: initial;
+        font-size: 2rem;
+        line-height: 2.5rem;
+      }
+
+      @include mQ(large) {
+        font-size: 2.5rem;
+        line-height: 3rem;
+      }
+    }
+  }
+
+  &__spinner {
+    display: inline-block;
+    width: 64px;
+    height: 64px;
+
+    @include mQ(medium) {
+      width: 100px;
+      height: 100px;
+    }
+
+    &::after {
+      content: '';
+      display: block;
+      width: 46px;
+      height: 46px;
+      margin: 1px;
+      border-radius: 50%;
+      border: 5px solid #db2525;
+      border-color: #db2525 transparent #db2525 transparent;
+      animation: spin 1.2s linear infinite;
+
+      @include mQ(medium) {
+        width: 80px;
+        height: 80px;
+        margin: 0;
+        border-width: 10px;
+      }
+    }
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
