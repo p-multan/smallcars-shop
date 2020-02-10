@@ -2,7 +2,7 @@ export class Hamburger {
   constructor() {
     this.hamburgerIcon = document.getElementById('navbar-hamburger');
     this.menuOverlay = document.getElementById('navbar-overlay');
-    this.menu = document.querySelector('.navbar__nav-menu');
+    this.menu = document.getElementById('navbarMenu');
     this.hamburgerIcon.addEventListener(
       'click',
       this.menuVisibilityHandler.bind(this)

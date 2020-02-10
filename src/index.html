@@ -46,7 +46,7 @@
           </span>
 
           <div class="navbar__nav-overlay" id="navbar-overlay">
-            <ul class="navbar__nav-menu">
+            <ul class="navbar__nav-menu" id="navbarMenu">
               <li class="navbar__nav-menu-item">
                 <a
                   href="/"
@@ -74,9 +74,9 @@
               class="navbar__link-logo"
             />
           </a>
-          <div class="navbar__cart">
+          <div class="navbar__cart" id="navbarCartBtn">
             <span class="fas fa-cart-plus navbar__cart-icon"></span>
-            <span class="navbar__cart-items">0</span>
+            <span class="navbar__cart-items" id="navbarCartItems">0</span>
           </div>
         </div>
       </div>
@@ -93,7 +93,7 @@
     <!-- Products -->
     <section class="products py-4" id="products">
       <h2 class="products__title">Our products</h2>
-      <div class="products__items">
+      <div class="products__items" id="productsItems">
         <!-- <article class="products__item">
           <div class="products__item-showcase">
             <img
@@ -117,16 +117,16 @@
       </div>
     </section>
 
-    <!-- Backdrop -->
-    <div class="cartBackdrop"></div>
+    <!-- Cart Backdrop -->
+    <div class="cartBackdrop" id="cartBackdrop"></div>
     <!-- Cart -->
-    <section class="cart py-4">
+    <section class="cart py-4" id="cart">
       <div class="cart-content">
-        <span class="cart__closeBtn">
+        <span class="cart__closeBtn" id="cartCloseBtn">
           <span class="cart__closeBtn-bar"></span>
         </span>
         <h2 class="cart__title">Your order</h2>
-        <div class="cart__items">
+        <div class="cart__items" id="cartItems">
           <!-- <div class="cart__item">
             <img
               src="./images/abarth 124 spider.jpg"
@@ -156,7 +156,11 @@
         </div>
         <div class="cart__footer">
           <p class="cart__footer-summary">
-            Your total: $<span class="cart__footer-summary-total">0</span>
+            Your total: $<span
+              class="cart__footer-summary-total"
+              id="cartSummary"
+              >0</span
+            >
           </p>
           <button class="cart__footer-clearBtn">
             clear cart

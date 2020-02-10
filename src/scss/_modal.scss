@@ -1,25 +1,19 @@
 .modalBackdrop {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  @include position(fixed, 0, 0, 0, 0);
   background: transparentize(darken($off-white-color, 30%), 0.2);
   z-index: 2;
 }
 
 .modal {
-  position: fixed;
-  top: 50%;
-  left: 50%;
+  @include position(fixed, 50%, null, null, 50%);
   transform: translate(-50%, -50%);
   width: 90%;
   max-width: $max-width;
   height: auto;
+  z-index: 3;
   background: white;
   border-radius: 10px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
-  z-index: 3;
 
   &__content {
     padding: 2rem;
@@ -37,9 +31,7 @@
   }
 
   &__closeBtn {
-    position: absolute;
-    top: 2rem;
-    left: 2rem;
+    @include position(absolute, 2rem, null, null, 2rem);
     transition: $transition;
     cursor: pointer;
 

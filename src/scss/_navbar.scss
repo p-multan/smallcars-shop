@@ -145,7 +145,7 @@
 
   &__cart {
     cursor: pointer;
-    position: relative;
+    @include position(relative);
     transition: $transition;
 
     &:hover {
@@ -153,19 +153,17 @@
     }
 
     &-items {
-      position: absolute;
-      top: 0;
-      right: 0;
+      @include position(absolute, 0, 0);
       display: flex;
       justify-content: center;
       align-items: center;
-      transform: translate(50%, -50%);
-      font-size: 1.8rem;
-      font-weight: bold;
       width: 2.5rem;
       height: 2.5rem;
+      font-size: 1.8rem;
+      font-weight: bold;
       border-radius: 50%;
       background-color: $off-white-color;
+      transform: translate(50%, -50%);
     }
   }
 }

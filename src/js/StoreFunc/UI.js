@@ -3,8 +3,9 @@ import { Modal } from './Modal';
 
 export class UI {
   constructor() {
-    this.cartContainer = document.querySelector('.cart__items');
-    this.productsContainer = document.querySelector('.products__items');
+    this.cartContainer = document.getElementById('cartItems');
+    this.productsContainer = document.getElementById('productsItems');
+    this.cartBackdrop = document.getElementById('cartBackdrop');
     this.products = [];
     this.buttonsDOM = [];
     this.cart = [];
@@ -104,10 +105,8 @@ export class UI {
   }
 
   setCartValues(cart) {
-    const itemsAmountContainer = document.querySelector('.navbar__cart-items');
-    const itemsPriceContainer = document.querySelector(
-      '.cart__footer-summary-total'
-    );
+    const itemsAmountContainer = document.getElementById('navbarCartItems');
+    const itemsPriceContainer = document.getElementById('cartSummary');
     let totalItemsPrice = 0;
     let totalItemsAmount = 0;
 
@@ -121,7 +120,6 @@ export class UI {
   }
 
   addProductToCart(product, comesFromShopPage) {
-    const cartContainer = document.querySelector('.cart__items');
     const cartItem = document.createElement('div');
     cartItem.classList.add('cart__item');
 
@@ -178,25 +176,29 @@ export class UI {
   }
 
   handleCartVisibility() {
-    const cartBackdrop = document.querySelector('.cartBackdrop');
-    const cart = document.querySelector('.cart');
+    const cart = document.getElementById('cart');
 
-    cartBackdrop.classList.toggle('js-show');
+    this.cartBackdrop.classList.toggle('js-show');
     cart.classList.toggle('js-show');
   }
 
   initializeApp(comesFromShopPage = true) {
-    const cartBtn = document.querySelector('.navbar__cart');
-    const closeCartBtn = document.querySelector('.cart__closeBtn');
-    const cartBackdrop = document.querySelector('.cartBackdrop');
+    const cartBtn = document.getElementById('navbarCartBtn');
+    const closeCartBtn = document.getElementById('cartCloseBtn');
 
     this.cart = Storage.getCart();
     this.setCartValues(this.cart);
     this.populateCart(this.cart, comesFromShopPage);
 
-    cartBtn.addEventListener('click', this.handleCartVisibility);
-    closeCartBtn.addEventListener('click', this.handleCartVisibility);
-    cartBackdrop.addEventListener('click', this.handleCartVisibility);
+    cartBtn.addEventListener('click', this.handleCartVisibility.bind(this));
+    closeCartBtn.addEventListener(
+      'click',
+      this.handleCartVisibility.bind(this)
+    );
+    this.cartBackdrop.addEventListener(
+      'click',
+      this.handleCartVisibility.bind(this)
+    );
   }
 
   populateCart(cart, comesFromShopPage) {

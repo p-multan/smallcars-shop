@@ -17,15 +17,7 @@
     font-size: 2rem;
 
     @include mQ(medium) {
-      height: 10vh;
-      flex-direction: row;
-      justify-content: space-around;
-      align-items: center;
-    }
-
-    @include mQ(large) {
-      max-width: $max-width;
-      margin: 0 auto;
+      padding: 2rem 4rem;
       height: 10vh;
       flex-direction: row;
       justify-content: space-between;

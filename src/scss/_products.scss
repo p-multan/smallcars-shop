@@ -12,7 +12,6 @@
     max-width: 1300px;
     margin: 0 auto;
     display: grid;
-    // zmienić na większych ekranach minmax na 360px
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     column-gap: 4rem;
     row-gap: 2.5rem;
@@ -24,7 +23,7 @@
 
   &__item {
     &-showcase {
-      position: relative;
+      @include position(relative);
       overflow: hidden;
       margin-bottom: 2rem;
 
@@ -37,8 +36,7 @@
 
       &-infoBtn,
       &-cartBtn {
-        position: absolute;
-        right: 0;
+        @include position(absolute, null, 0);
         padding: 1rem 2rem;
         border: none;
         border-radius: 15px 0 0 15px;
