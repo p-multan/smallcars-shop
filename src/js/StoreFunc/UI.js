@@ -7,7 +7,6 @@ export class UI {
     this.productsContainer = document.querySelector('.products__items');
     this.products = [];
     this.buttonsDOM = [];
-    this.readMoreButtonsDOM = [];
     this.cart = [];
   }
 
@@ -89,8 +88,6 @@ export class UI {
       ...document.querySelectorAll('.products__item-showcase-infoBtn')
     ];
 
-    this.readMoreButtonsDOM = buttons;
-
     buttons.forEach(button => {
       const id = button.dataset.id;
       const tempProduct = this.products.find(product => product.id === id);
@@ -123,7 +120,7 @@ export class UI {
     itemsPriceContainer.textContent = parseFloat(totalItemsPrice.toFixed(2));
   }
 
-  addProductToCart(product) {
+  addProductToCart(product, comesFromShopPage) {
     const cartContainer = document.querySelector('.cart__items');
     const cartItem = document.createElement('div');
     cartItem.classList.add('cart__item');
@@ -155,6 +152,28 @@ export class UI {
       </div>
     `;
 
+    const deleteBtn = cartItem.querySelector('.cart__item-controls-delete');
+    const increaseBtn = cartItem.querySelector('.cart__item-controls-increase');
+    const decreaseBtn = cartItem.querySelector('.cart__item-controls-decrease');
+    const clearCartBtn = document.querySelector('.cart__footer-clearBtn');
+
+    clearCartBtn.addEventListener(
+      'click',
+      this.clearCart.bind(this, comesFromShopPage)
+    );
+
+    deleteBtn.addEventListener('click', e => {
+      this.handleItemAction('DELETE', e.target, comesFromShopPage);
+    });
+
+    increaseBtn.addEventListener('click', e => {
+      this.handleItemAction('INCREASE', e.target, comesFromShopPage);
+    });
+
+    decreaseBtn.addEventListener('click', e => {
+      this.handleItemAction('DECREASE', e.target, comesFromShopPage);
+    });
+
     this.cartContainer.insertAdjacentElement('beforeend', cartItem);
   }
 
@@ -166,51 +185,32 @@ export class UI {
     cart.classList.toggle('js-show');
   }
 
-  initializeApp() {
+  initializeApp(comesFromShopPage = true) {
     const cartBtn = document.querySelector('.navbar__cart');
     const closeCartBtn = document.querySelector('.cart__closeBtn');
     const cartBackdrop = document.querySelector('.cartBackdrop');
 
     this.cart = Storage.getCart();
     this.setCartValues(this.cart);
-    this.populateCart(this.cart);
+    this.populateCart(this.cart, comesFromShopPage);
 
     cartBtn.addEventListener('click', this.handleCartVisibility);
     closeCartBtn.addEventListener('click', this.handleCartVisibility);
     cartBackdrop.addEventListener('click', this.handleCartVisibility);
   }
 
-  populateCart(cart) {
-    this.cart.forEach(product => this.addProductToCart(product));
+  populateCart(cart, comesFromShopPage) {
+    cart.forEach(product => this.addProductToCart(product, comesFromShopPage));
   }
 
-  cartLogic() {
-    const clearCartBtn = document.querySelector('.cart__footer-clearBtn');
-    clearCartBtn.addEventListener('click', this.clearCart.bind(this));
-
-    this.cartContainer.addEventListener('click', e => {
-      switch (true) {
-        case e.target.classList.contains('cart__item-controls-delete'):
-          this.handleItemAction('DELETE', e.target);
-          break;
-        case e.target.classList.contains('cart__item-controls-increase'):
-          this.handleItemAction('INCREASE', e.target);
-          break;
-        case e.target.classList.contains('cart__item-controls-decrease'):
-          this.handleItemAction('DECREASE', e.target);
-          break;
-      }
-    });
-  }
-
-  handleItemAction(action, item) {
+  handleItemAction(action, item, comesFromShopPage) {
     const targetItemID = item.dataset.id;
     const targetItem = item.parentElement.parentElement.parentElement;
     const tempItem = this.cart.find(product => product.id === targetItemID);
     switch (action) {
       case 'DELETE':
         this.cartContainer.removeChild(targetItem);
-        this.removeItemFromCart(targetItemID);
+        this.removeItemFromCart(targetItemID, comesFromShopPage);
         break;
       case 'INCREASE':
         tempItem.amount++;
@@ -220,7 +220,7 @@ export class UI {
         tempItem.amount--;
         if (tempItem.amount < 1) {
           this.cartContainer.removeChild(targetItem);
-          this.removeItemFromCart(targetItemID);
+          this.removeItemFromCart(targetItemID, comesFromShopPage);
         } else {
           item.previousElementSibling.textContent = tempItem.amount;
         }
@@ -230,24 +230,26 @@ export class UI {
     this.setCartValues(this.cart);
   }
 
-  clearCart() {
+  clearCart(comesFromShopPage) {
     const cartItems = this.cart.map(item => item.id);
-    cartItems.forEach(item => this.removeItemFromCart(item));
+    cartItems.forEach(item => this.removeItemFromCart(item, comesFromShopPage));
     while (this.cartContainer.firstChild) {
       this.cartContainer.removeChild(this.cartContainer.firstChild);
     }
     this.handleCartVisibility();
   }
 
-  removeItemFromCart(id) {
+  removeItemFromCart(id, comesFromShopPage) {
     this.cart = this.cart.filter(item => item.id !== id);
     this.setCartValues(this.cart);
     Storage.saveCart(this.cart);
-    const button = this.buttonsDOM.find(button => button.dataset.id === id);
-    button.disabled = false;
-    button.innerHTML = `
+    if (comesFromShopPage) {
+      const button = this.buttonsDOM.find(button => button.dataset.id === id);
+      button.disabled = false;
+      button.innerHTML = `
       <i class="fas fa-shopping-cart products__item-showcase-cartBtn-icon"></i>
       add to the cart
     `;
+    }
   }
 }

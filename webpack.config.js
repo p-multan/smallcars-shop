@@ -4,9 +4,12 @@ const webpack = require('webpack');
 
 module.exports = {
   mode: 'development',
-  entry: './src/app.js',
+  entry: {
+    app: './src/app.js',
+    website: './src/website.js'
+  },
   output: {
-    filename: 'app.js',
+    filename: '[name].js',
     path: path.resolve(__dirname, 'dist')
   },
   watch: true,
@@ -25,8 +28,28 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'Webpack Starter Project',
-      template: path.resolve(__dirname, 'src', 'index.html')
+      chunks: ['app'],
+      template: path.resolve(__dirname, 'src', 'index.html'),
+      filename: path.resolve(__dirname, 'dist', 'index.html'),
+      minify: {
+        collapseWhitespace: true
+      }
+    }),
+    new HtmlWebpackPlugin({
+      chunks: ['website'],
+      template: path.resolve(__dirname, 'src', 'shop-rules.html'),
+      filename: path.resolve(__dirname, 'dist', 'shop-rules.html'),
+      minify: {
+        collapseWhitespace: true
+      }
+    }),
+    new HtmlWebpackPlugin({
+      chunks: ['website'],
+      template: path.resolve(__dirname, 'src', 'privacy-policy.html'),
+      filename: path.resolve(__dirname, 'dist', 'privacy-policy.html'),
+      minify: {
+        collapseWhitespace: true
+      }
     }),
     new webpack.HotModuleReplacementPlugin()
   ],

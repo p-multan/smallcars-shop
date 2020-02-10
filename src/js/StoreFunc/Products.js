@@ -14,7 +14,7 @@ export class Products {
       products = products.map(product => {
         const { title, price, description } = product.fields;
         const { id } = product.sys;
-        const image = product.fields.image.fields.file.url;
+        const image = `https:${product.fields.image.fields.file.url}`;
         return { title, price, description, id, image };
       });
       return products;

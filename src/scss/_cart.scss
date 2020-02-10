@@ -1,13 +1,9 @@
 .cartBackdrop {
-  position: fixed;
-  top: 0;
-  right: 0;
-  left: 0;
-  bottom: 0;
-  transition: $transition;
+  @include position(fixed, 0, 0, 0, 0);
   background: transparentize(darken($off-white-color, 30%), 0.2);
   z-index: 2;
   visibility: hidden;
+  transition: $transition;
 
   &.js-show {
     visibility: visible;
@@ -21,7 +17,7 @@
   bottom: 0;
   width: 100%;
   overflow: auto;
-  z-index: 3;
+  z-index: 4;
   background: $off-white-color;
   transition: $transition;
   transform: translateX(100%);
@@ -37,10 +33,34 @@
 
   &__closeBtn {
     position: absolute;
-    top: 2rem;
-    left: 2rem;
-    font-size: 3rem;
+    top: 6.5rem;
+    right: 4rem;
+    width: 50px;
+    height: 40px;
     cursor: pointer;
+    transition: $transition;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+
+    &-bar::before,
+    &-bar::after {
+      width: 100%;
+      content: '';
+      @include position(absolute, 0, 0, 0, 0);
+      height: 5px;
+      background-color: $text-dark-color;
+      transition: $transition;
+    }
+
+    &-bar::before {
+      transform: rotate(-45deg);
+    }
+
+    &-bar::after {
+      transform: rotate(45deg);
+    }
   }
 
   &__title {

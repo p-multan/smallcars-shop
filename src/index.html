@@ -21,7 +21,7 @@
     <template id="product-description-modal-content">
       <div class="modal__content">
         <span class="modal__closeBtn">
-          <i class="fas fa-window-close modal__closeBtn-icon"></i>
+          <i class="fas fa-times modal__closeBtn-icon"></i>
         </span>
         <div class="modal__intro">
           <img src="" alt="" class="modal__intro-image" />
@@ -41,9 +41,32 @@
     <nav class="navbar">
       <div class="container">
         <div class="navbar__content">
-          <span class="navbar__hamburger">
-            <span class="navbar__hamburger-icon fas fa-bars"></span>
+          <span class="navbar__hamburger" id="navbar-hamburger">
+            <span class="navbar__hamburger-bar"></span>
           </span>
+
+          <div class="navbar__nav-overlay" id="navbar-overlay">
+            <ul class="navbar__nav-menu">
+              <li class="navbar__nav-menu-item">
+                <a
+                  href="/"
+                  class="navbar__nav-menu-link navbar__nav-menu-link--active"
+                  >Home</a
+                >
+              </li>
+              <li class="navbar__nav-menu-item">
+                <a href="./shop-rules.html" class="navbar__nav-menu-link"
+                  >Shop Rules</a
+                >
+              </li>
+              <li class="navbar__nav-menu-item">
+                <a href="./privacy-policy.html" class="navbar__nav-menu-link"
+                  >Privacy Policy</a
+                >
+              </li>
+            </ul>
+          </div>
+
           <a href="/" class="navbar__link">
             <img
               src="./images/logo.png"
@@ -100,9 +123,9 @@
     <section class="cart py-4">
       <div class="cart-content">
         <span class="cart__closeBtn">
-          <i class="fas fa-window-close cart__closeBtn-icon"></i>
+          <span class="cart__closeBtn-bar"></span>
         </span>
-        <h2 class="cart__title">Your content</h2>
+        <h2 class="cart__title">Your order</h2>
         <div class="cart__items">
           <!-- <div class="cart__item">
             <img

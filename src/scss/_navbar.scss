@@ -8,9 +8,121 @@
     height: 15vh;
   }
 
-  &__hamburger-icon,
+  &__hamburger {
+    @include position(relative);
+    width: 50px;
+    height: 40px;
+    z-index: 3;
+    cursor: pointer;
+    transition: $transition;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+
+    &.js-show {
+      @include mQ(xlarge) {
+        transform: translateX(-300px);
+      }
+      .navbar__hamburger-bar {
+        background-color: transparent;
+
+        &::before {
+          transform: rotate(-45deg);
+        }
+
+        &::after {
+          transform: rotate(45deg);
+        }
+
+        &::before,
+        &::after {
+          top: 0;
+        }
+      }
+    }
+
+    &-bar,
+    &-bar::before,
+    &-bar::after {
+      width: 100%;
+      content: '';
+      @include position(absolute, 0, 0, 0, 0);
+      height: 5px;
+      background-color: $text-dark-color;
+      transition: $transition;
+    }
+
+    &-bar::before {
+      top: -17px;
+    }
+
+    &-bar {
+      top: calc(50% - 2.5px);
+    }
+
+    &-bar::after {
+      top: 17px;
+    }
+  }
+
   &__cart-icon {
     font-size: 4rem;
+  }
+
+  &__nav {
+    &-overlay {
+      @include position(fixed, 0, 0, 0, 0);
+      background-color: transparentize(darken($off-white-color, 30%), 0.2);
+      z-index: 2;
+      visibility: hidden;
+      transition: $transition;
+
+      &.js-show {
+        visibility: visible;
+      }
+    }
+
+    &-menu {
+      @include position(fixed, 0, null, 0, 0);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      width: 100%;
+      background-color: $off-white-color;
+      color: $text-dark-color;
+      transform: translateX(-100%);
+      transition: $transition;
+
+      &.js-show {
+        transform: translateX(0);
+      }
+
+      @include mQ(medium) {
+        width: 50vw;
+        min-width: 450px;
+      }
+
+      &-item {
+        text-transform: uppercase;
+        margin-bottom: 2rem;
+      }
+
+      &-link {
+        font-size: 2.5rem;
+        transition: color 0.2s;
+
+        @include mQ(medium) {
+          font-size: 3rem;
+        }
+
+        &:hover,
+        &--active {
+          color: $main-color;
+          font-weight: bold;
+        }
+      }
+    }
   }
 
   &__link {
