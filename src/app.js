@@ -1,4 +1,3 @@
-import './main.scss';
 import { Products } from './js/StoreFunc/Products';
 import { UI } from './js/StoreFunc/UI';
 import { Hamburger } from './js/WebsiteFunc/Hamburger';

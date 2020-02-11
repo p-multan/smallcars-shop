@@ -2,6 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const FixStyleOnlyEntriesPlugin = require('webpack-fix-style-only-entries');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const CleanPlugin = require('clean-webpack-plugin');
 
@@ -9,7 +10,8 @@ module.exports = {
   mode: 'production',
   entry: {
     app: './src/app.js',
-    website: './src/website.js'
+    website: './src/website.js',
+    style: './src/main.scss'
   },
   output: {
     filename: '[name].js',
@@ -17,8 +19,10 @@ module.exports = {
   },
   plugins: [
     new CleanPlugin.CleanWebpackPlugin(),
+    new MiniCssExtractPlugin(),
+    new FixStyleOnlyEntriesPlugin(),
     new HtmlWebpackPlugin({
-      chunks: ['app'],
+      chunks: ['app', 'style'],
       template: path.resolve(__dirname, 'src', 'index.html'),
       filename: path.resolve(__dirname, 'dist', 'index.html'),
       minify: {
@@ -26,7 +30,7 @@ module.exports = {
       }
     }),
     new HtmlWebpackPlugin({
-      chunks: ['website'],
+      chunks: ['website', 'style'],
       template: path.resolve(__dirname, 'src', 'shop-rules.html'),
       filename: path.resolve(__dirname, 'dist', 'shop-rules.html'),
       minify: {
@@ -34,7 +38,7 @@ module.exports = {
       }
     }),
     new HtmlWebpackPlugin({
-      chunks: ['website'],
+      chunks: ['website', 'style'],
       template: path.resolve(__dirname, 'src', 'privacy-policy.html'),
       filename: path.resolve(__dirname, 'dist', 'privacy-policy.html'),
       minify: {
